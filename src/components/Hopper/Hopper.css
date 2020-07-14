@@ -1,0 +1,13 @@
+
+.board {
+  display: flex;
+}
+
+.row {
+  display: flex;
+}
+
+.hoper {
+  width: 64px;
+  height: 64px;
+}
