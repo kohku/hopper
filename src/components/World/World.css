@@ -1,0 +1,13 @@
+.world {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.world--3D {
+  transform:
+    rotateX(51deg)
+    rotateZ(43deg);
+  transform-style: preserve-3d;
+}

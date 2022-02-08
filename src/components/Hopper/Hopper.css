@@ -1,13 +1,8 @@
 
-.board {
-  display: flex;
-}
-
-.row {
-  display: flex;
-}
-
-.hoper {
-  width: 64px;
-  height: 64px;
+.hopper {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  transition: top 0.5s linear, left 0.5s linear, opacity .5s linear;
 }

@@ -1,0 +1,9 @@
+
+.board {
+  display: block;
+}
+
+.board__row {
+  display: flex;
+}
+

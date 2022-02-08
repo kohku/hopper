@@ -1,16 +1,19 @@
 import React from 'react';
-import logo from './images/bell-N@640.png';
-import Hopper from './components/Hopper';
+import { RecoilRoot } from 'recoil';
+import World from './components/World';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Hopper />
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header> */}
-    </div>
+    <RecoilRoot>
+      <div className="App">
+        <h1>Hopper</h1>
+        <World />
+        {/* <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+        </header> */}
+      </div>
+    </RecoilRoot>
   );
 }
 

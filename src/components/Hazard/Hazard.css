@@ -1,0 +1,19 @@
+.hazard {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  transition: left 0.5s linear, opacity .5s linear;
+}
+
+.hazard--truck {
+  width: 40px;
+  height: 30px;
+  background-color: orange;
+}
+
+.hazard--boat {
+  width: 40px;
+  height: 30px;
+  background-color:saddlebrown;
+}
