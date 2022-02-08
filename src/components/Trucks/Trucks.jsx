@@ -1,27 +1,13 @@
 import React, { useCallback } from 'react';
-import { atom, useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { v4 as uuid } from 'uuid';
 import useInterval from '../../hooks/useInterval';
 import Hazard, { HazardType } from '../Hazard';
 import { WORLD_SIZE, MovingDirection } from '../../constants'
-
-const truckState = atom({
-  key: "trucks",
-  default: [{
-    x: -1,
-    y: 6,
-    direction: MovingDirection.East,
-    id: uuid(),
-  }, {
-    x: WORLD_SIZE,
-    y: 5,
-    direction: MovingDirection.West,
-    id: uuid(),
-  }],
-});
+import { trucksState } from '../../state';
 
 const Trucks = () => {
-  const [trucks, setTrucks] = useRecoilState(truckState);
+  const [trucks, setTrucks] = useRecoilState(trucksState);
 
   const moveTrucks = useCallback(() => {
     const trucksCopy = trucks.map((truck) => {

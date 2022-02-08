@@ -1,18 +1,9 @@
 import React from 'react';
-import { atom, useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import useEventListener from '../../hooks/useEventListener';
 import useThrottle from '../../hooks/useThrottle';
 import { KeyCode, WORLD_SIZE, MovingDirection } from '../../constants';
-
-const hopperState = atom({
-  key: 'hopperState',
-  default: {
-    x: Math.floor(WORLD_SIZE / 2),
-    y: WORLD_SIZE - 1,
-    direction: MovingDirection.North,
-    dead: false,
-  },
-});
+import { hopperState } from '../../state';
 
 const Inputs = () => {
   const [hopper, setHopper] = useRecoilState(hopperState);
@@ -50,7 +41,7 @@ const Inputs = () => {
       default:
         break;
     }
-  }, 500);
+  }, 350);
 
   const onKeyPress = (event) => {
     event.preventDefault();

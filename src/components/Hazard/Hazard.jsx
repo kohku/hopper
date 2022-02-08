@@ -1,6 +1,12 @@
 import classNames from 'classnames';
 import React from 'react';
-import { WORLD_SIZE } from '../../constants';
+import {
+  WORLD_SIZE,
+  offsetX,
+  offsetY,
+  stepX,
+  stepY,
+} from '../../constants';
 import './Hazard.css';
 
 export const HazardType = Object.freeze({
@@ -14,11 +20,6 @@ const Hazard = (props) => {
     y = 0,
     hazardType = HazardType.Truck,
   } = props;
-
-  const offsetX = 20;
-  const offsetY = 15;
-  const stepX = 82;
-  const stepY = 62;
 
   return (
     <div

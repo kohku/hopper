@@ -19,3 +19,8 @@ export const KeyCode = Object.freeze({
   ArrowRight: 39,
   ArrowDown: 40,
 });
+
+export const offsetX = 20;
+export const offsetY = 15;
+export const stepX = 82;
+export const stepY = 62;
