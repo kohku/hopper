@@ -1,8 +1,12 @@
 
 .hopper {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   top: 0;
   left: 0;
-  transition: top 0.5s linear, left 0.5s linear, opacity .5s linear;
+  transition: top 450ms linear, left 450ms linear, opacity 450ms linear;
+}
+
+.hopper--riding, .hopper--riding > * {
+  transition-duration: 500ms;
 }

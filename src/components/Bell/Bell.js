@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { MovingDirection } from '../../constants';
 import north from '../../images/bell-N@640.png';
+import ana from '../../images/IMG_9220.png';
 
 import './Bell.css';
 

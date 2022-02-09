@@ -20,7 +20,35 @@ export const KeyCode = Object.freeze({
   ArrowDown: 40,
 });
 
-export const offsetX = 20;
-export const offsetY = 15;
-export const stepX = 82;
-export const stepY = 62;
+export const RoadLanes = [{
+  number: 4, 
+  direction: MovingDirection.West,
+  occurrence: .1,
+}, {
+  number: 5, 
+  direction: MovingDirection.East,
+  occurrence: .1,
+}, {
+  number: 6, 
+  direction: MovingDirection.West,
+  occurrence: .1,
+}, {
+  number: 7, 
+  direction: MovingDirection.East,
+  occurrence: .1,
+}];
+
+export const RiverLanes = [{
+  number: 1, 
+  direction: MovingDirection.East,
+  occurrence: .25,
+}, {
+  number: 2, 
+  direction: MovingDirection.West,
+  occurrence: .25,
+}];
+
+export const offsetX = 20 * 1.5;
+export const offsetY = 15 * 1.5;
+export const stepX = 82 * 1.5;
+export const stepY = 62 * 1.5;

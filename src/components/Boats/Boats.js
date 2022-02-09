@@ -3,10 +3,19 @@ import { useRecoilState } from 'recoil';
 import { v4 as uuid } from 'uuid';
 import useInterval from '../../hooks/useInterval';
 import Hazard, { HazardType } from '../Hazard';
-import { WORLD_SIZE, MovingDirection } from '../../constants'
-import { boatsState } from '../../state';
+import {
+  WORLD_SIZE,
+  MovingDirection,
+  RiverLanes,
+} from '../../constants'
+import {
+  hopperState,
+  boatsState,
+} from '../../state';
+import { probability } from '../../utils';
 
 const Boats = () => {
+  const [hopper, setHopper] = useRecoilState(hopperState);
   const [boats, setBoats] = useRecoilState(boatsState);
 
   const moveTrucks = useCallback(() => {
@@ -24,26 +33,37 @@ const Boats = () => {
       }
     });
     const newBoats = [];
-    // Algorithm to create new trucks
-    newBoats.push({
-      x: -1,
-      y: 1,
-      direction: MovingDirection.East,
-      id: uuid(),
-    }, {
-      x: WORLD_SIZE,
-      y: 2,
-      direction: MovingDirection.West,
-      id: uuid(),
+    RiverLanes.forEach((lane) => {
+      if (probability(lane.occurrence)) {
+        newBoats.push({
+          x: lane.direction === MovingDirection.West
+            ? WORLD_SIZE
+            : -1,
+          y: lane.number,
+          direction: lane.direction,
+          id: uuid(),
+        });
+      }
     });
     setBoats(boatsCopy.filter((boat) => (
       boat.x < WORLD_SIZE && boat.x >= 0
     )).concat(newBoats));
-  }, [boats, setBoats]);
+    if (hopper.rideBy) {
+      const ride = boatsCopy.find((boat) => boat.id === hopper.rideBy);
+      if (ride) {
+        setHopper({
+          ...hopper,
+          x: ride.x,
+          y: ride.y,
+          rideBy: ride.id,
+        });
+      }
+    }
+  }, [boats, setBoats, hopper, setHopper]);
 
   useInterval(() => {
     moveTrucks();
-  }, 500);
+  }, 1500);
 
   return (
     <>
