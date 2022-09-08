@@ -1,6 +1,6 @@
 .bell {
-  width: 40px;
-  height: 30px;
+  width: calc(40px * 1.5);
+  height: calc(30px * 1.5);
   transition: transform 0.15s ease;
 }
 
@@ -13,6 +13,25 @@
 }
 
 .bell--east {
+  transform: rotate(90deg);
+}
+
+.ana {
+  margin-top: -10px;
+  width: calc(40px * 1.5);
+  height: calc(40px * 1.5);
+  transition: transform 0.15s ease;
+}
+
+.ana--west {
+  transform: rotate(-90deg);
+}
+
+.ana--south {
+  transform: rotate(180deg);
+}
+
+.ana--east {
   transform: rotate(90deg);
 }
 

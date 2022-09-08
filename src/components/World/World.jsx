@@ -17,10 +17,9 @@ import {
   isDrowned,
   isRidingBoat,
   hasReachedGoal
-} from './helpers';
+} from '../../helpers';
 
 import './World.css';
-import { MovingDirection } from '../../constants';
 
 const World = (props) => {
   const {
@@ -33,66 +32,34 @@ const World = (props) => {
   const boats = useRecoilValue(boatsState);
 
   useEffect(() => {
-    if (game.gameOver) {
-      return;
-    }
+    const truck = isHitByTruck(hopper, trucks);
 
-    if (isHitByTruck(hopper, trucks)) {
+    if (truck && truck.id !== hopper.hitBy) {
       console.log('hit by a truck');
-      setGame({
-        ...game,
-        gameOver: true,
-        win: false,
-      });
       setHopper({
         ...hopper,
         dead: true,
+        hitBy: truck.id,
       });
     }
-  }, [game, setGame, hopper, setHopper, trucks]);
+  }, [hopper, trucks, setHopper]);
 
   useEffect(() => {
-    if (game.gameOver) {
-      return;
-    }
+    const ride = isRidingBoat(hopper, boats);
+    const drowned = isDrowned(hopper, boats);
 
-    if (isDrowned(hopper, boats)) {
+    if (drowned) {
       console.log('drowned');
+      console.log(JSON.stringify(hopper));
+      console.log(JSON.stringify(boats));
+    } else if (ride && ride.id !== hopper.rideBy) {
+      console.log('riding boat');
       setHopper({
         ...hopper,
-        dead: true,
-      });
-    } else if (isRidingBoat(hopper, boats)) {
-      const ride = boats.find((boat) => (
-        boat.x === hopper.x && boat.y === hopper.y
-      ));
-      if (!ride) {
-        return;
-      }
-      const x = ride.direction === MovingDirection.West ?
-        ride.x - 1 : ride.x + 1;
-      setHopper({
-        ...hopper,
-        x,
-        y: ride.y,
+        rideBy: ride.id,
       });
     }
-  }, [game, setGame, hopper, setHopper, boats]);
-
-  useEffect(() => {
-    if (game.gameOver) {
-      return;
-    }
-
-    if (hasReachedGoal(hopper)) {
-      console.log('has reach goal');
-      setGame({
-        ...game,
-        gameOver: true,
-        win: true,
-      });
-    }
-  }, [game, setGame, hopper, setHopper]);
+  }, [hopper, boats, setHopper]);
 
   return (
     <div

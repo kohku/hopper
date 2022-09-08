@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import { useRecoilValue } from 'recoil';
 import {
   WORLD_SIZE,
@@ -11,12 +12,19 @@ import Bell from '../Bell';
 import { hopperState } from '../../state';
 import './Hopper.css';
 
-const Hopper = (props) => {
-  const { x, y, direction } = useRecoilValue(hopperState);
+const Hopper = () => {
+  const {
+    x,
+    y,
+    direction,
+    rideBy,
+  } = useRecoilValue(hopperState);
 
   return (
     <div
-      className='hopper'
+      className={classNames('hopper',
+        {'hopper--riding': rideBy}
+      )}
       style={{
         left: (x * stepX) + offsetX,
         top: (y * stepY) + offsetY,

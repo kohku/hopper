@@ -41,7 +41,7 @@ const Inputs = () => {
       default:
         break;
     }
-  }, 350);
+  }, 450);
 
   const onKeyPress = (event) => {
     event.preventDefault();

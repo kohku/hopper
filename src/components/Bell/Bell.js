@@ -1,7 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import { MovingDirection } from '../../constants';
-import north from '../../images/bell-N@640.png';
+import bell from '../../images/bell-N@640.png';
+// import ana from '../../images/IMG_9220.png';
 
 import './Bell.css';
 
@@ -17,7 +18,8 @@ const Bell = (props) => {
         `bell--${direction}`,
       )}
     >
-      <img src={north} className="bell" alt="logo" />
+      <img src={bell} className="bell" alt="logo" />
+      {/* <img src={ana} className="ana" alt="logo" /> */}
     </div>
   );
 }

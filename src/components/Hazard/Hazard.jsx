@@ -19,6 +19,7 @@ const Hazard = (props) => {
     x = 0,
     y = 0,
     hazardType = HazardType.Truck,
+    children,
   } = props;
 
   return (
@@ -33,6 +34,7 @@ const Hazard = (props) => {
         opacity: x < 0 || x > WORLD_SIZE - 1 ? 0 : 1,
       }}
     >
+      {children}
     </div>
   );
 };
