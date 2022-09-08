@@ -23,7 +23,7 @@ export const KeyCode = Object.freeze({
 export const RoadLanes = [{
   number: 4, 
   direction: MovingDirection.West,
-  occurrence: .1,
+  occurrence: .5,
 }, {
   number: 5, 
   direction: MovingDirection.East,
@@ -41,11 +41,11 @@ export const RoadLanes = [{
 export const RiverLanes = [{
   number: 1, 
   direction: MovingDirection.East,
-  occurrence: .25,
+  occurrence: .5,
 }, {
   number: 2, 
   direction: MovingDirection.West,
-  occurrence: .25,
+  occurrence: .5,
 }];
 
 export const offsetX = 20 * 1.5;

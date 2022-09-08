@@ -10,6 +10,9 @@ import {
 } from '../../constants'
 import { trucksState } from '../../state';
 import { probability } from '../../utils';
+import carHeadingWest from '../../images/yellow-car-W.png';
+import carHeadingEast from '../../images/yellow-car-E.png';
+import './Truck.css';
 
 const Trucks = () => {
   const [trucks, setTrucks] = useRecoilState(trucksState);
@@ -48,7 +51,7 @@ const Trucks = () => {
 
   useInterval(() => {
     moveTrucks();
-  }, 500);
+  }, 750);
 
   return (
     <>
@@ -59,7 +62,12 @@ const Trucks = () => {
           y={y}
           direction={direction}
           hazardType={HazardType.Truck}
-        />
+        >
+          {direction === MovingDirection.West
+            ? <img src={carHeadingWest} className="car car--west" alt="car" />
+            : <img src={carHeadingEast} className="car car--east" alt="car" />
+          }
+        </Hazard>
       ))}
     </>
   );

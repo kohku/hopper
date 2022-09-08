@@ -17,7 +17,7 @@ import {
   isDrowned,
   isRidingBoat,
   hasReachedGoal
-} from '../../helpers/helpers';
+} from '../../helpers';
 
 import './World.css';
 
@@ -50,6 +50,8 @@ const World = (props) => {
 
     if (drowned) {
       console.log('drowned');
+      console.log(JSON.stringify(hopper));
+      console.log(JSON.stringify(boats));
     } else if (ride && ride.id !== hopper.rideBy) {
       console.log('riding boat');
       setHopper({

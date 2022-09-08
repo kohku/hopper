@@ -12,7 +12,12 @@ import {
   hopperState,
   boatsState,
 } from '../../state';
+import { isRidingBoat } from '../../helpers';
 import { probability } from '../../utils';
+import flamingoHeadingWest from '../../images/flamingo-W.png';
+import flamingoHeadingEast from '../../images/flamingo-E.png';
+
+const wasRidingBoat = isRidingBoat;
 
 const Boats = () => {
   const [hopper, setHopper] = useRecoilState(hopperState);
@@ -48,17 +53,25 @@ const Boats = () => {
     setBoats(boatsCopy.filter((boat) => (
       boat.x < WORLD_SIZE && boat.x >= 0
     )).concat(newBoats));
-    if (hopper.rideBy) {
-      const ride = boatsCopy.find((boat) => boat.id === hopper.rideBy);
-      if (ride) {
-        setHopper({
-          ...hopper,
-          x: ride.x,
-          y: ride.y,
-          rideBy: ride.id,
-        });
-      }
+
+    const prevRide = wasRidingBoat(hopper, boats);
+
+    if (!prevRide) {
+      return;
     }
+
+    const ride = boatsCopy.find((boat) => boat.id === prevRide.id);
+
+    if (!ride) {
+      return;
+    }
+
+    setHopper({
+      ...hopper,
+      x: ride.x,
+      y: ride.y,
+      rideBy: ride.id,
+    });
   }, [boats, setBoats, hopper, setHopper]);
 
   useInterval(() => {
@@ -74,7 +87,12 @@ const Boats = () => {
           y={y}
           direction={direction}
           hazardType={HazardType.Boat}
-        />
+        >
+          {direction === MovingDirection.West
+            ? <img src={flamingoHeadingWest} className="car car--west" alt="car" />
+            : <img src={flamingoHeadingEast} className="car car--east" alt="car" />
+          }
+        </Hazard>
       ))}
     </>
   );

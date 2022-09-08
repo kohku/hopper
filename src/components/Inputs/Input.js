@@ -15,7 +15,6 @@ const Inputs = () => {
           ...hopper,
           y: hopper.y > 0 ? hopper.y - 1 : hopper.y,
           direction: MovingDirection.North,
-          rideBy: undefined,
         });
         break;
       case KeyCode.ArrowRight:
@@ -23,7 +22,6 @@ const Inputs = () => {
           ...hopper,
           x: hopper.x < WORLD_SIZE - 1 ? hopper.x + 1 : hopper.x,
           direction: MovingDirection.East,
-          rideBy: undefined,
         });
         break;
       case KeyCode.ArrowDown:
@@ -31,7 +29,6 @@ const Inputs = () => {
           ...hopper,
           y: hopper.y < WORLD_SIZE - 1 ? hopper.y + 1 : hopper.y,
           direction: MovingDirection.South,
-          rideBy: undefined,
         });
         break;
       case KeyCode.ArrowLeft:
@@ -39,7 +36,6 @@ const Inputs = () => {
           ...hopper,
           x: hopper.x > 0 ? hopper.x - 1 : hopper.x,
           direction: MovingDirection.West,
-          rideBy: undefined,
         });
         break;
       default:

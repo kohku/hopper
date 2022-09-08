@@ -4,17 +4,21 @@
   top: 0;
   left: 0;
   transition: left 0.5s linear, opacity .5s linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hazard--truck {
   z-index: 4;
-  width: calc(40px * 1.5);
-  height: calc(30px * 1.5);
-  background-color: orange;
+  width: calc(50px * 1.5);
+  height: calc(25px * 1.5);
+  transition-duration: 750ms;
+  /* background-color: orange; */
 }
 
 .hazard--boat {
   width: calc(40px * 1.5);
   height: calc(30px * 1.5);
-  background-color:saddlebrown;
+  /* background-color:saddlebrown; */
 }
